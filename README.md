@@ -15,6 +15,10 @@ Após fazer o build e subir o ambiente
 
 `docker-compose exec php-apache composer install` 
 
+`docker-compose exec php-apache php artisan jetstream:install livewire`
+
+`docker-compose exec php-apache php artisan jetstream:install livewire --teams`
+
 Adicionar no arquivo hosts 
 
 127.0.0.1 app.intranet 
