@@ -1,1 +1,3 @@
 src/app/.env
+src/app/vendor/
+src/app/node_modules/

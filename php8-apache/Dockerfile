@@ -13,3 +13,5 @@ RUN a2enmod rewrite
 
 COPY vhost.conf /etc/apache2/sites-available
 RUN a2ensite vhost.conf
+
+WORKDIR /var/www/html/app
