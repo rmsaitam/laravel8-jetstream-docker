@@ -33,7 +33,11 @@ No browser, acesse http://app.intranet:8001 para criar o banco de dados e depois
 
 `docker-compose exec php-apache php artisan migrations`
 
+Instalação do NPM e Node.js via NVM (controle de versão do Node.js)
+
 `docker-compose exec php-apache curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash`
+
+`source ~/.bashrc && nvm install v14.15.5`
 
 `docker-compose exec php-apache npm install && npm run dev`
 
