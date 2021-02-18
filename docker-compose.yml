@@ -1,0 +1,28 @@
+version: "3"
+services:
+  php-apache:
+    container_name: php8-apache
+    build: ./php8-apache
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src/app:/var/www/html/app
+      - ./php8-apache/config/jit.ini:/usr/local/etc/php/conf.d/jit.ini
+      - ./php8-apache/config/timezone.ini:/usr/local/etc/php/conf.d/timezone.ini
+    environment:
+        VIRTUAL_HOST: app.intranet
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - "./db:/var/lib/mysql"
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8001:8080
+ 
