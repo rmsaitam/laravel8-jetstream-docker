@@ -15,15 +15,7 @@ Após fazer o build e subir o ambiente
 
 `docker-compose exec php-apache composer install` 
 
-`docker-compose exec php-apache php artisan jetstream:install livewire`
-
-`docker-compose exec php-apache php artisan jetstream:install livewire --teams`
-
-Adicionar no arquivo hosts 
-
-127.0.0.1 app.intranet 
-
-`cp src/app/.env.example .env` 
+`cp src/app/.env.example src/app/.env` 
 
 Edite o arquivo .env e adicione as credencias do banco de dados 
 ```
@@ -33,19 +25,28 @@ DB_DATABASE=laraveljetstream
 DB_USERNAME=root
 DB_PASSWORD=secret
 ```
+
 No browser, acesse http://app.intranet:8001 para criar o banco de dados e depois executar as migrations, conforme segue:
 
-`docker-compose exec php-apache php artisan migrations`
+`docker-compose exec php-apache php artisan jetstream:install livewire`
+
+`docker-compose exec php-apache php artisan jetstream:install livewire --teams`
+
+`docker-compose exec php-apache php artisan migrate`
+
+Adicionar no arquivo hosts 
+
+127.0.0.1 app.intranet 
 
 Instalação do NPM e Node.js via NVM (controle de versão do Node.js)
 
-`docker-compose exec php-apache curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash`
+`docker exec -it php8-apache curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash`
 
-`source ~/.bashrc && nvm install v14.15.5`
+`docker exec -it php8-apache source ~/.bashrc && nvm install v14.15.5`
 
-`docker-compose exec php-apache npm install && npm run dev`
+`docker exec -it php8-apache npm install && npm run dev`
 
-`docker-compose exec php-apache chown -R www-data:www-data storage`
+`docker exec -it php8-apache chown -R www-data:www-data storage`
 
 No browser, acesse http://app.intranet:8000 crie um novo usuário no link "register", após criar o usuário irá autenticar e redirecionar no dashboard automaticamente.
 
