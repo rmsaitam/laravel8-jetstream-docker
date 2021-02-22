@@ -25,6 +25,9 @@ DB_DATABASE=laraveljetstream
 DB_USERNAME=root
 DB_PASSWORD=secret
 ```
+Adicionar no arquivo hosts 
+
+127.0.0.1 app.intranet 
 
 No browser, acesse http://app.intranet:8001 para criar o banco de dados e depois executar as migrations, conforme segue:
 
@@ -34,19 +37,19 @@ No browser, acesse http://app.intranet:8001 para criar o banco de dados e depois
 
 `docker-compose exec php-apache php artisan migrate`
 
-Adicionar no arquivo hosts 
-
-127.0.0.1 app.intranet 
-
 Instalação do NPM e Node.js via NVM (controle de versão do Node.js)
 
-`docker exec -it php8-apache curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash`
+`docker exec -it php8-apache bash` 
+ 
+ Dentro do container php8-apache, execute na ordem, conforme segue abaixo:
+ 
+  `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash`
 
-`docker exec -it php8-apache source ~/.bashrc && nvm install v14.15.5`
+ `source ~/.bashrc && nvm install v14.15.5`
 
-`docker exec -it php8-apache npm install && npm run dev`
+  `npm install && npm run dev`
 
-`docker exec -it php8-apache chown -R www-data:www-data storage`
+  `chown -R www-data:www-data storage`
 
 No browser, acesse http://app.intranet:8000 crie um novo usuário no link "register", após criar o usuário irá autenticar e redirecionar no dashboard automaticamente.
 
