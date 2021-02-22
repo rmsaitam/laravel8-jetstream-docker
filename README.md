@@ -37,6 +37,8 @@ No browser, acesse http://app.intranet:8001 para criar o banco de dados e depois
 
 `docker-compose exec php-apache php artisan migrate`
 
+`docker-compose exec php-apache php artisan key:generate`
+
 Instalação do NPM e Node.js via NVM (controle de versão do Node.js)
 
 `docker exec -it php8-apache bash` 
